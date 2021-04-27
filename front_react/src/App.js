@@ -43,9 +43,95 @@ function GetTest() {
 
   return(
     <>
-    <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Test in Console</button>
+    <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Test</button>
     </>
   )
+}
+
+function GetEvents() {
+
+  const handleClick = async(e)=>{
+    e.preventDefault();
+    let campus = localStorage.getItem('campus');
+    console.log(campus);
+    let info = await get_req("https://api.intra.42.fr/v2/campus/" + campus + "/events");
+    console.log(info);
+    localStorage.setItem('result', JSON.stringify(info));
+  }
+
+  return(
+    <>
+      <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Events</button>
+    </>
+  )
+}
+
+function GetLogInfo() {
+
+  const handleClick = async(e)=>{
+    e.preventDefault();
+    let login = localStorage.getItem('login');
+    console.log(login);
+    let info = await get_req("https://api.intra.42.fr/v2/users/" + login);
+    console.log(info);
+  }
+
+  return(
+    <>
+      <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Login Info</button>
+    </>
+  )
+}
+
+function GetEventsAss() {
+
+  const handleClick = async(e)=>{
+    e.preventDefault();
+    let event = localStorage.getItem('event');
+    console.log(event);
+    let info = await get_req("https://api.intra.42.fr/v2/events/" + event + "/users");
+    console.log(info);
+  }
+
+  return(
+    <>
+      <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Event Users</button>
+    </>
+  )
+}
+
+function ShowEvents(params) {
+  const [isSubmited, setIsSubmited] = useState(false);
+
+  const handleClick = async(e) => {
+    e.preventDefault();
+    setIsSubmited(true);
+    let test = localStorage.getItem('result');
+    console.log(test);
+    let parsed = JSON.parse(test)
+    let numb = 0;
+	  params.html = "Last 30 events created       "
+	  while (parsed[numb])
+	  {
+	  	let des = parsed[numb].name;
+	  	let id = parsed[numb].id;
+	  	params.html = `${params.html}
+	  	         ---->${id} ${des}
+	  	`
+	  	numb++;
+  	}
+    return (params.html);
+  }
+  return (
+    !isSubmited ?
+    <>
+      <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Results (only events, alpha ver)</button>
+    </> :
+    <>
+      <button className='button' type='submit' onClick={(e)=>handleClick(e)}>Get Results (only events, alpha ver)</button>
+      <div className='Results'>{params.html}</div>
+    </>
+  );
 }
 
 function EnterData(props) {
@@ -71,9 +157,22 @@ function App() {
       <header className="App-header">
         <p>Can you see the results in console</p>
         <TokenLink/>
+        <div className='CaptureInfo'>
+          <EnterData type='login'/>
+          <EnterData type='campus'/>
+          <EnterData type='event'/>
+        </div>
         <div>
           <EnterData type='test'/>
           <GetTest/>
+        </div>
+        <div>
+          <GetEvents/>
+          <GetEventsAss/>
+          <GetLogInfo/>
+        </div>
+        <div>
+          <ShowEvents/>
         </div>
         <div>Created by Juan Rodríguez</div>
       </header>
