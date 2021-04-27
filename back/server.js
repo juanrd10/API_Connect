@@ -6,7 +6,7 @@
 /*   By: juanrodr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:26:46 by juanrodr          #+#    #+#             */
-/*   Updated: 2021/04/27 15:42:53 by juanrodr         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:06:47 by juanrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ const app = express();
 require('dotenv').config();
 const port = 3000;
 
-app.use(express.static('../front/build'));
+app.use(express.static('../front_react/build'));
 
 app.get('/private', async(req, res) =>{
 	console.log('Token sended');
@@ -37,7 +37,7 @@ app.get('/private', async(req, res) =>{
 })
 
 app.get('/', (req, res) =>{
-	res.send('../front/build/index.html')
+	res.send('../front_react/build/index.html')
 })
 
 app.listen(port, () => {
