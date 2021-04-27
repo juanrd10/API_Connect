@@ -17,3 +17,8 @@ Para poder levantar la aplicación necesitas tener node instalado en el PC
 	```
 
 4. Solo queda entrar en localhost:3000 con tu navegador, abrir la consola de desarrollador y empezar a probar llamadas.
+
+
+#RUBY
+Tras varias horas intentando implementar ruby como server, he decidido por el momento mejorar algo y dar alguna funcionalidad
+a la Webb App que tengo. Espero que me de tiempo y no conformarme con express.
