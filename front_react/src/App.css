@@ -18,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #353e52;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,28 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Credits {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #3ccbf7;
+  color: white;
+  text-align: center;
+}
+
+.Upper {
+  vertical-align: middle;
+  position: fixed;
+  padding: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #3ccbf7;
+  color: white;
+  text-align: center;
 }
 
 .Results {

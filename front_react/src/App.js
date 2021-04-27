@@ -155,14 +155,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Can you see the results in console</p>
+        <div className="Upper">Open your developer tools to see the responses in js console</div>
         <TokenLink/>
         <div className='CaptureInfo'>
           <EnterData type='login'/>
           <EnterData type='campus'/>
           <EnterData type='event'/>
         </div>
-        <div>
+        <div className='CaptureInfo'>
           <EnterData type='test'/>
           <GetTest/>
         </div>
@@ -174,7 +174,7 @@ function App() {
         <div>
           <ShowEvents/>
         </div>
-        <div>Created by Juan Rodríguez</div>
+        <div className="Credits">Created by Juan Rodríguez</div>
       </header>
     </div>
   );
