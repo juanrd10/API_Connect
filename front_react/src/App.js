@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { parse } from "ipaddr.js";
+import { useState } from 'react';
 
 function TokenLink() {
 
@@ -71,13 +69,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Can you see the results in console</p>
         <TokenLink/>
-        <EnterData type='test'/>
-        <GetTest/>
+        <div>
+          <EnterData type='test'/>
+          <GetTest/>
+        </div>
+        <div>Created by Juan Rodríguez</div>
       </header>
     </div>
   );
